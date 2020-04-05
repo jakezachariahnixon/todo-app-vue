@@ -7,22 +7,26 @@
         class="task"
         >
         {{ todo.title }}
+        <span v-if="getChildren(todo).length > 0" class="toggleChildren" v-on:click="todo.toggle = !todo.toggle" :value="todo.toggle">&darr;</span>
         <label class="checkContainer">
             <input type="checkbox" v-model="todo.completed" />
             <span class="checkmark"></span>
         </label>
         </li>
         <!-- Create any children if they exist -->
-        <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
-            <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
-            class="child task"
-            >
-            {{ childTodo.title }}
-            <label class="checkContainer">
-                <input type="checkbox" v-model="childTodo.completed" />
-                <span class="checkmark"></span>
-            </label>
-            </li>
+        <!-- First check toggle setting -->
+        <div v-if="todo.toggle">
+            <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
+                <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
+                class="child task"
+                >
+                {{ childTodo.title }}
+                <label class="checkContainer">
+                    <input type="checkbox" v-model="childTodo.completed" />
+                    <span class="checkmark"></span>
+                </label>
+                </li>
+            </div>
         </div>
     </div>
   </ul>

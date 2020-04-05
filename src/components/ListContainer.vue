@@ -133,7 +133,8 @@ export default {
           title: this.newTask,
           completed: false,
           priority: this.newPriority,
-          parent: this.newParent
+          parent: this.newParent,
+          toggle: false
         });
         this.newTask = "";
         this.newPriority = "";
