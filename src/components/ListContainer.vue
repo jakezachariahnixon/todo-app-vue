@@ -238,6 +238,7 @@ export default {
   transition: 0.3s;
   z-index: 3;
 }
+#addTaskBtn:focus {outline:0;}
 // Add Task styling
 #closeAddTaskInterface {
   width: 100%;
@@ -306,6 +307,7 @@ export default {
   margin-right: 5px;
   cursor: pointer;
 }
+.priorityBtn:focus {outline:0;}
 #lowPriority {
   color: $lowPriority;
   border-color: $lowPriority;
