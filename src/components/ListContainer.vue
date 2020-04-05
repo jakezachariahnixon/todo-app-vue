@@ -17,13 +17,13 @@
       </textarea>
       <div id="priorityContainer">
         <h2>Priority</h2>
-        <button class="priorityBtn" id="lowPriority">Low</button>
-        <button class="priorityBtn" id="midPriority">Medium</button>
-        <button class="priorityBtn" id="highPriority">High</button>
+        <button class="priorityBtn" id="lowPriority" v-on:click="this.handleLowPriority">Low</button>
+        <button class="priorityBtn" id="midPriority" v-on:click="this.midPriority">Medium</button>
+        <button class="priorityBtn" id="highPriority" v-on:click="this.highPriority">High</button>
       </div>
       <div id="parentContainer">
         <h2>Parent</h2>
-        <select>
+        <select v-model="newParent">
           <option value="none">None</option>
           <option value="1">Task One</option>
           <option value="2">Task Two</option>
@@ -45,6 +45,8 @@ export default {
     return {
       todos: [],
       newTask: "",
+      newPriority: "",
+      newParent: "",
       addOpen: false
     };
   },
@@ -64,12 +66,43 @@ export default {
     TaskList
   },
   methods: {
+    resetPriorityButtons() {
+        document.getElementById("lowPriority").style.color = "#808080";
+        document.getElementById("lowPriority").style.backgroundColor = "#e5e5e5";
+        document.getElementById("midPriority").style.color = "#e29155";
+        document.getElementById("midPriority").style.backgroundColor = "#e5e5e5";
+        document.getElementById("highPriority").style.color = "#e25555";
+        document.getElementById("highPriority").style.backgroundColor = "#e5e5e5";
+    },
+    handleLowPriority() {
+        this.resetPriorityButtons();
+        document.getElementById("lowPriority").style.color = "#e5e5e5";
+        document.getElementById("lowPriority").style.backgroundColor = "#808080";
+        this.newPriority = "low";
+    },
+    midPriority() {
+        this.resetPriorityButtons();
+        document.getElementById("midPriority").style.color = "#e5e5e5";
+        document.getElementById("midPriority").style.backgroundColor = "#e29155";
+        this.newPriority = "mid";
+    },
+    highPriority() {
+        this.resetPriorityButtons();
+        document.getElementById("highPriority").style.color = "#e5e5e5";
+        document.getElementById("highPriority").style.backgroundColor = "#e25555";
+        this.newPriority = "high";
+    },
     addTodo() {
       if (this.newTask.length < 1) {
         document.getElementById("taskName").style.borderColor = "#e25555";
+      } else if (this.newPriority == "") {
+        alert("Must enter a priority");
       } else {
-        this.todos.push({ title: this.newTask, completed: false });
+        this.todos.push({ title: this.newTask, completed: false, priority: this.newPriority, parent: this.newParent });
         this.newTask = "";
+        this.newPriority = "";
+        this.resetPriorityButtons();
+        this.newParent = "";
         document.getElementById("taskName").style.borderColor = "#e5e5e5";
       }
     },
@@ -80,7 +113,6 @@ export default {
       if (!this.addOpen) {
         this.openAddTask();
       } else {
-        alert("yeet");
         this.addTodo();
       }
     },
