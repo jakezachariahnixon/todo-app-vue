@@ -42,11 +42,13 @@
       <div id="parentContainer">
         <h2>Parent</h2>
         <select v-model="newParent">
-            <option value="">None</option>
-            <option
-                v-for="rootTask in rootTasks"
-                v-bind:key="rootTask.title"
-                :value="rootTask.title">{{rootTask.title}}</option>
+          <option value="">None</option>
+          <option
+            v-for="rootTask in rootTasks"
+            v-bind:key="rootTask.title"
+            :value="rootTask.title"
+            >{{ rootTask.title }}</option
+          >
         </select>
       </div>
     </div>
@@ -70,16 +72,16 @@ export default {
     };
   },
   computed: {
-      rootTasks: function () {
-          return this.todos.filter(function(task) {
-              return task.parent == "";
-          })
-      },
-      childTasks: function () {
-          return this.todos.filter(function(task) {
-              return task.parent != "";
-          })
-      }
+    rootTasks: function() {
+      return this.todos.filter(function(task) {
+        return task.parent == "";
+      });
+    },
+    childTasks: function() {
+      return this.todos.filter(function(task) {
+        return task.parent != "";
+      });
+    }
   },
   mounted() {
     if (localStorage.getItem("todos"))
@@ -240,7 +242,9 @@ export default {
   transform: scale(1.1);
   transition: 0.3s;
 }
-#addTaskBtn:focus {outline:0;}
+#addTaskBtn:focus {
+  outline: 0;
+}
 // Add Task styling
 #closeAddTaskInterface {
   width: 100%;
@@ -309,7 +313,9 @@ export default {
   margin-right: 5px;
   cursor: pointer;
 }
-.priorityBtn:focus {outline:0;}
+.priorityBtn:focus {
+  outline: 0;
+}
 #lowPriority {
   color: $lowPriority;
   border-color: $lowPriority;

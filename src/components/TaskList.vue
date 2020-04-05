@@ -1,34 +1,54 @@
 <template>
   <ul id="listTasks">
-    <div v-for="todo in rootTasks"
-      v-bind:key="todo.title">
+    <div v-for="todo in rootTasks" v-bind:key="todo.title">
       <!-- Create Root -->
-        <li :class="{complete : todo.completed, highP : todo.priority == 'high', midP : todo.priority == 'mid', lowP : todo.priority == 'low'}"
+      <li
+        :class="{
+          complete: todo.completed,
+          highP: todo.priority == 'high',
+          midP: todo.priority == 'mid',
+          lowP: todo.priority == 'low'
+        }"
         class="task"
-        >
+      >
         {{ todo.title }}
-        <span v-if="getChildren(todo).length > 0" class="toggleChildren" v-on:click="todo.toggle = !todo.toggle" :value="todo.toggle">&darr;</span>
+        <span
+          v-if="getChildren(todo).length > 0"
+          class="toggleChildren"
+          v-on:click="todo.toggle = !todo.toggle"
+          :value="todo.toggle"
+          >&darr;</span
+        >
         <label class="checkContainer">
-            <input type="checkbox" v-model="todo.completed" />
-            <span class="checkmark"></span>
+          <input type="checkbox" v-model="todo.completed" />
+          <span class="checkmark"></span>
         </label>
-        </li>
-        <!-- Create any children if they exist -->
-        <!-- First check toggle setting -->
+      </li>
+      <!-- Create any children if they exist -->
+      <!-- First check toggle setting -->
       <transition name="slide">
-          <div v-if="todo.toggle">
-              <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
-                  <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
-                  class="child task"
-                  >
-                  {{ childTodo.title }}
-                  <label class="checkContainer">
-                      <input type="checkbox" v-model="childTodo.completed" />
-                      <span class="checkmark"></span>
-                  </label>
-                  </li>
-              </div>
+        <div v-if="todo.toggle">
+          <div
+            v-for="childTodo in getChildren(todo)"
+            v-bind:key="childTodo.title"
+          >
+            <li
+              :class="{
+                complete: childTodo.completed,
+                highP: childTodo.priority == 'high',
+                midP: childTodo.priority == 'mid',
+                lowP: childTodo.priority == 'low'
+              }"
+              class="child task"
+            >
+              {{ childTodo.title }}
+              <label class="checkContainer">
+                <input type="checkbox" v-model="childTodo.completed" />
+                <span class="checkmark"></span>
+              </label>
+            </li>
           </div>
+        </div>
       </transition>
     </div>
   </ul>
@@ -39,14 +59,14 @@ export default {
   name: "TaskList",
   props: {
     childTasks: Array,
-    rootTasks: Array,
+    rootTasks: Array
   },
   methods: {
-      getChildren: function(parentItem) {
-          return this.childTasks.filter(function(childTask) {
-              return childTask.parent == parentItem.title;
-          })
-      }
+    getChildren: function(parentItem) {
+      return this.childTasks.filter(function(childTask) {
+        return childTask.parent == parentItem.title;
+      });
+    }
   }
 };
 </script>
@@ -87,26 +107,26 @@ export default {
   transition: 0.3s;
 }
 .lowP {
-    border-left: 15px solid $lowPriority;
+  border-left: 15px solid $lowPriority;
 }
 .midP {
-    border-left: 15px solid $midPriority;
+  border-left: 15px solid $midPriority;
 }
 .highP {
-    border-left: 15px solid $highPriority;
+  border-left: 15px solid $highPriority;
 }
 .child {
-    background-color: $white;
-    color: $backgroundColor;
-    border-left: none !important;
-    padding-left: 5%;
-    margin-left: 50px;
-    width: 290px;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    border-bottom: 1px solid $offWhite;
-    border-radius: 0px;
-    z-index: -1;
+  background-color: $white;
+  color: $backgroundColor;
+  border-left: none !important;
+  padding-left: 5%;
+  margin-left: 50px;
+  width: 290px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-bottom: 1px solid $offWhite;
+  border-radius: 0px;
+  z-index: -1;
 }
 // Custom checkbox
 .checkContainer {
@@ -169,10 +189,10 @@ export default {
   width: 20px;
 }
 .child .checkmark:after {
-    top: 5px;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    background-size: 10px 10px;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background-size: 10px 10px;
 }
 </style>
