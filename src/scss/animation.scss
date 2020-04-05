@@ -8,3 +8,11 @@
         border-radius: 1000px;
     }
 }
+.slide-enter-active, .slide-leave-active  {
+    transition: all .6s ease;
+  }
+  .slide-enter, .slide-leave-to
+  {
+    transform: translateY(-100%);
+    opacity: 0;
+  }

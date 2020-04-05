@@ -141,6 +141,7 @@ export default {
         this.resetPriorityButtons();
         this.newParent = "";
         document.getElementById("taskName").style.borderColor = "#e5e5e5";
+        this.closeAddTask();
       }
     },
     displayNoNameError() {
@@ -157,11 +158,13 @@ export default {
       document.getElementById("addTaskInterface").style.display = "block";
       document.getElementById("addTaskInterface").style.opacity = "1";
       document.getElementById("addTaskBtn").style.backgroundColor = "#65D57E";
+      document.getElementById("listTasks").style.filter = "blur(2px)";
       this.addOpen = true;
     },
     closeAddTask() {
       this.addOpen = false;
       document.getElementById("addTaskInterface").style.opacity = "0";
+      document.getElementById("listTasks").style.filter = "blur(0px)";
       setTimeout(function() {
         document.getElementById("addTaskInterface").style.display = "none";
       }, 500);
@@ -198,7 +201,7 @@ export default {
   width: 100%;
   height: 4em;
   border-radius: 10px;
-  z-index: 1;
+  z-index: 5;
 }
 // Style list name
 #listName {
@@ -228,7 +231,7 @@ export default {
   line-height: 30px;
   color: #ffffffcc;
   transition: 0.3s;
-  z-index: 3;
+  z-index: 6;
 }
 #addTaskBtn:hover {
   background: #162a37;
@@ -236,7 +239,6 @@ export default {
   border: 6px solid $highlightGreen;
   transform: scale(1.1);
   transition: 0.3s;
-  z-index: 3;
 }
 #addTaskBtn:focus {outline:0;}
 // Add Task styling

@@ -15,19 +15,21 @@
         </li>
         <!-- Create any children if they exist -->
         <!-- First check toggle setting -->
-        <div v-if="todo.toggle">
-            <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
-                <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
-                class="child task"
-                >
-                {{ childTodo.title }}
-                <label class="checkContainer">
-                    <input type="checkbox" v-model="childTodo.completed" />
-                    <span class="checkmark"></span>
-                </label>
-                </li>
-            </div>
-        </div>
+      <transition name="slide">
+          <div v-if="todo.toggle">
+              <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
+                  <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
+                  class="child task"
+                  >
+                  {{ childTodo.title }}
+                  <label class="checkContainer">
+                      <input type="checkbox" v-model="childTodo.completed" />
+                      <span class="checkmark"></span>
+                  </label>
+                  </li>
+              </div>
+          </div>
+      </transition>
     </div>
   </ul>
 </template>
@@ -52,6 +54,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "../scss/color.scss";
+@import "../scss/animation.scss";
 #listTasks {
   margin: 0 0 0 0;
   padding: 0 0 10% 0;
@@ -59,6 +62,7 @@ export default {
   overflow: auto;
 }
 .task {
+  position: relative;
   list-style: none;
   width: 80%;
   padding-top: 5%;
@@ -76,6 +80,7 @@ export default {
   color: $white;
   opacity: 1;
   transition: 0.3s;
+  z-index: 2;
 }
 .complete {
   opacity: 0.68;
@@ -101,6 +106,7 @@ export default {
     padding-bottom: 3%;
     border-bottom: 1px solid $offWhite;
     border-radius: 0px;
+    z-index: -1;
 }
 // Custom checkbox
 .checkContainer {
