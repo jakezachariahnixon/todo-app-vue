@@ -2,7 +2,7 @@
   <div id="listContainer">
     <h1 id="listName">{{ title }}</h1>
     <button id="addTaskBtn">
-        +
+      +
     </button>
   </div>
 </template>
@@ -75,30 +75,30 @@ export default {
   color: $titleColor;
 }
 #addTaskBtn {
-    position: fixed;
-    width: 64px;
-    height: 64px;
-    top: calc(80% - 32px);
-    left: calc(50% - 32px);
-    background: #061A27 0% 0% no-repeat padding-box;
-    border: 4px solid $green;
-    border-radius: 100px;
-    opacity: 1;
-    text-align: center;
-    font-size: 50px;
-    font-weight: 250;
-    line-height: 50px;
-    color: #ffffffcc;
-    transition: 0.3s;
-    z-index: 3;
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  top: calc(80% - 32px);
+  left: calc(50% - 32px);
+  background: #061a27 0% 0% no-repeat padding-box;
+  border: 4px solid $green;
+  border-radius: 100px;
+  opacity: 1;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 250;
+  line-height: 50px;
+  color: #ffffffcc;
+  transition: 0.3s;
+  z-index: 3;
 }
 #addTaskBtn:hover {
-    background: #162A37;
-    color: #ffffff;
-    border: 6px solid $highlightGreen;
-    // transform: translateX(-2px) translateY(-2px) scale(1.1);
-    transform:  scale(1.1);
-    transition: 0.3s;
-    z-index: 3;
+  background: #162a37;
+  color: #ffffff;
+  border: 6px solid $highlightGreen;
+  // transform: translateX(-2px) translateY(-2px) scale(1.1);
+  transform: scale(1.1);
+  transition: 0.3s;
+  z-index: 3;
 }
 </style>
