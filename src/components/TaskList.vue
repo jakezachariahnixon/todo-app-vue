@@ -126,7 +126,7 @@ export default {
   padding-bottom: 3%;
   border-bottom: 1px solid $offWhite;
   border-radius: 0px;
-  z-index: -1;
+  z-index: 0;
 }
 // Custom checkbox
 .checkContainer {
