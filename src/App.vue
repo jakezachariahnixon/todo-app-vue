@@ -3,12 +3,17 @@
     <div id="print"></div>
     <div id="logo"></div>
     <h1 id="appTitle">To Do List</h1>
+    <ListContainer title="Things to Do List" />
   </div>
 </template>
 
 <script>
+import ListContainer from "./components/ListContainer.vue";
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    ListContainer
+  }
 };
 </script>
 
