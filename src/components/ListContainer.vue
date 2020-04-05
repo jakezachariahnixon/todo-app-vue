@@ -9,6 +9,23 @@ export default {
   name: "ListContainer",
   props: {
     title: String
+  },
+  data() {
+    return {
+      todos: []
+    };
+  },
+  mounted() {
+    if (localStorage.getItem("todos"))
+      this.todos = JSON.parse(localStorage.getItem("todos"));
+  },
+  watch: {
+    todos: {
+      handler() {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+      },
+      deep: true
+    }
   }
 };
 </script>
