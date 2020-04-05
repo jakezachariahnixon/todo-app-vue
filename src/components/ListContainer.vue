@@ -1,7 +1,7 @@
 <template>
   <div id="listContainer">
     <h1 id="listName">{{ title }}</h1>
-    <TaskList v-bind:tasks="todos" />
+    <TaskList v-bind:childTasks="childTasks" v-bind:rootTasks="rootTasks" />
     <button id="addTaskBtn" v-on:click="this.handleAddButton">
       +
     </button>
@@ -42,10 +42,11 @@
       <div id="parentContainer">
         <h2>Parent</h2>
         <select v-model="newParent">
-          <option value="none">None</option>
-          <option value="1">Task One</option>
-          <option value="2">Task Two</option>
-          <option value="3">Task Three</option>
+            <option value="">None</option>
+            <option
+                v-for="rootTask in rootTasks"
+                v-bind:key="rootTask.title"
+                :value="rootTask.title">{{rootTask.title}}</option>
         </select>
       </div>
     </div>
@@ -67,6 +68,18 @@ export default {
       newParent: "",
       addOpen: false
     };
+  },
+  computed: {
+      rootTasks: function () {
+          return this.todos.filter(function(task) {
+              return task.parent == "";
+          })
+      },
+      childTasks: function () {
+          return this.todos.filter(function(task) {
+              return task.parent != "";
+          })
+      }
   },
   mounted() {
     if (localStorage.getItem("todos"))
@@ -142,6 +155,7 @@ export default {
     openAddTask() {
       document.getElementById("addTaskInterface").style.display = "block";
       document.getElementById("addTaskInterface").style.opacity = "1";
+      document.getElementById("addTaskBtn").style.backgroundColor = "#65D57E";
       this.addOpen = true;
     },
     closeAddTask() {
@@ -150,6 +164,7 @@ export default {
       setTimeout(function() {
         document.getElementById("addTaskInterface").style.display = "none";
       }, 500);
+      document.getElementById("addTaskBtn").style.backgroundColor = "#061a27";
     }
   }
 };

@@ -1,17 +1,30 @@
 <template>
   <ul id="listTasks">
-    <li
-      v-for="todo in tasks"
-      v-bind:key="todo.title"
-      :class="{complete : todo.completed, highP : todo.priority == 'high', midP : todo.priority == 'mid', lowP : todo.priority == 'low'}"
-      class="task"
-    >
-      {{ todo.title }}
-      <label class="checkContainer">
-        <input type="checkbox" v-model="todo.completed" />
-        <span class="checkmark"></span>
-      </label>
-    </li>
+    <div v-for="todo in rootTasks"
+      v-bind:key="todo.title">
+      <!-- Create Root -->
+        <li :class="{complete : todo.completed, highP : todo.priority == 'high', midP : todo.priority == 'mid', lowP : todo.priority == 'low'}"
+        class="task"
+        >
+        {{ todo.title }}
+        <label class="checkContainer">
+            <input type="checkbox" v-model="todo.completed" />
+            <span class="checkmark"></span>
+        </label>
+        </li>
+        <!-- Create any children if they exist -->
+        <div v-for="childTodo in getChildren(todo)" v-bind:key="childTodo.title">
+            <li :class="{complete : childTodo.completed, highP : childTodo.priority == 'high', midP : childTodo.priority == 'mid', lowP : childTodo.priority == 'low'}"
+            class="child task"
+            >
+            {{ childTodo.title }}
+            <label class="checkContainer">
+                <input type="checkbox" v-model="childTodo.completed" />
+                <span class="checkmark"></span>
+            </label>
+            </li>
+        </div>
+    </div>
   </ul>
 </template>
 
@@ -19,7 +32,15 @@
 export default {
   name: "TaskList",
   props: {
-    tasks: Array
+    childTasks: Array,
+    rootTasks: Array,
+  },
+  methods: {
+      getChildren: function(parentItem) {
+          return this.childTasks.filter(function(childTask) {
+              return childTask.parent == parentItem.title;
+          })
+      }
   }
 };
 </script>
@@ -64,6 +85,15 @@ export default {
 }
 .highP {
     border-left: 15px solid $highPriority;
+}
+.child {
+    background-color: $white;
+    color: $backgroundColor;
+    border-left: none !important;
+    padding-left: 4%;
+    margin-left: calc(5% + 15px);
+    border-bottom: 1px solid $offWhite;
+    border-radius: 0px;
 }
 // Custom checkbox
 .checkContainer {
