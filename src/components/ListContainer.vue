@@ -1,6 +1,7 @@
 <template>
   <div id="listContainer">
     <h1 id="listName">{{ title }}</h1>
+    <TaskList v-bind:tasks="todos" />
     <button id="addTaskBtn">
       +
     </button>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import TaskList from "./TaskList.vue";
 export default {
   name: "ListContainer",
   props: {
@@ -29,6 +31,9 @@ export default {
       },
       deep: true
     }
+  },
+  components: {
+    TaskList
   }
 };
 </script>
