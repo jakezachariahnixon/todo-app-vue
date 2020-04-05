@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListContainer renders correctly 1`] = `
+<div
+  id="listContainer"
+>
+  <h1
+    id="listName"
+  >
+    
+  </h1>
+   
+  <ul
+    id="listTasks"
+  />
+   
+  <button
+    id="addTaskBtn"
+  >
+    
+    +
+  
+  </button>
+   
+  <div
+    id="addTaskInterface"
+  >
+    <div
+      id="closeAddTaskInterface"
+    >
+      
+      ×
+    
+    </div>
+     
+    <textarea
+      id="taskName"
+      placeholder="What do you need to do?"
+    />
+     
+    <div
+      id="priorityContainer"
+    >
+      <h2>
+        Priority
+      </h2>
+       
+      <button
+        class="priorityBtn"
+        id="lowPriority"
+      >
+        
+        Low
+      
+      </button>
+       
+      <button
+        class="priorityBtn"
+        id="midPriority"
+      >
+        
+        Medium
+      
+      </button>
+       
+      <button
+        class="priorityBtn"
+        id="highPriority"
+      >
+        
+        High
+      
+      </button>
+    </div>
+     
+    <div
+      id="parentContainer"
+    >
+      <h2>
+        Parent
+      </h2>
+       
+      <select>
+        <option
+          value=""
+        >
+          None
+        </option>
+         
+      </select>
+    </div>
+  </div>
+</div>
+`;
