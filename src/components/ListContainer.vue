@@ -17,9 +17,27 @@
       </textarea>
       <div id="priorityContainer">
         <h2>Priority</h2>
-        <button class="priorityBtn" id="lowPriority" v-on:click="this.handleLowPriority">Low</button>
-        <button class="priorityBtn" id="midPriority" v-on:click="this.midPriority">Medium</button>
-        <button class="priorityBtn" id="highPriority" v-on:click="this.highPriority">High</button>
+        <button
+          class="priorityBtn"
+          id="lowPriority"
+          v-on:click="this.handleLowPriority"
+        >
+          Low
+        </button>
+        <button
+          class="priorityBtn"
+          id="midPriority"
+          v-on:click="this.handleMidPriority"
+        >
+          Medium
+        </button>
+        <button
+          class="priorityBtn"
+          id="highPriority"
+          v-on:click="this.handleHighPriority"
+        >
+          High
+        </button>
       </div>
       <div id="parentContainer">
         <h2>Parent</h2>
@@ -67,30 +85,30 @@ export default {
   },
   methods: {
     resetPriorityButtons() {
-        document.getElementById("lowPriority").style.color = "#808080";
-        document.getElementById("lowPriority").style.backgroundColor = "#e5e5e5";
-        document.getElementById("midPriority").style.color = "#e29155";
-        document.getElementById("midPriority").style.backgroundColor = "#e5e5e5";
-        document.getElementById("highPriority").style.color = "#e25555";
-        document.getElementById("highPriority").style.backgroundColor = "#e5e5e5";
+      document.getElementById("lowPriority").style.color = "#808080";
+      document.getElementById("lowPriority").style.backgroundColor = "#e5e5e5";
+      document.getElementById("midPriority").style.color = "#e29155";
+      document.getElementById("midPriority").style.backgroundColor = "#e5e5e5";
+      document.getElementById("highPriority").style.color = "#e25555";
+      document.getElementById("highPriority").style.backgroundColor = "#e5e5e5";
     },
     handleLowPriority() {
-        this.resetPriorityButtons();
-        document.getElementById("lowPriority").style.color = "#e5e5e5";
-        document.getElementById("lowPriority").style.backgroundColor = "#808080";
-        this.newPriority = "low";
+      this.resetPriorityButtons();
+      document.getElementById("lowPriority").style.color = "#e5e5e5";
+      document.getElementById("lowPriority").style.backgroundColor = "#808080";
+      this.newPriority = "low";
     },
-    midPriority() {
-        this.resetPriorityButtons();
-        document.getElementById("midPriority").style.color = "#e5e5e5";
-        document.getElementById("midPriority").style.backgroundColor = "#e29155";
-        this.newPriority = "mid";
+    handleMidPriority() {
+      this.resetPriorityButtons();
+      document.getElementById("midPriority").style.color = "#e5e5e5";
+      document.getElementById("midPriority").style.backgroundColor = "#e29155";
+      this.newPriority = "mid";
     },
-    highPriority() {
-        this.resetPriorityButtons();
-        document.getElementById("highPriority").style.color = "#e5e5e5";
-        document.getElementById("highPriority").style.backgroundColor = "#e25555";
-        this.newPriority = "high";
+    handleHighPriority() {
+      this.resetPriorityButtons();
+      document.getElementById("highPriority").style.color = "#e5e5e5";
+      document.getElementById("highPriority").style.backgroundColor = "#e25555";
+      this.newPriority = "high";
     },
     addTodo() {
       if (this.newTask.length < 1) {
@@ -98,7 +116,12 @@ export default {
       } else if (this.newPriority == "") {
         alert("Must enter a priority");
       } else {
-        this.todos.push({ title: this.newTask, completed: false, priority: this.newPriority, parent: this.newParent });
+        this.todos.push({
+          title: this.newTask,
+          completed: false,
+          priority: this.newPriority,
+          parent: this.newParent
+        });
         this.newTask = "";
         this.newPriority = "";
         this.resetPriorityButtons();
