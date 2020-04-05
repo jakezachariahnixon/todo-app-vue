@@ -55,7 +55,7 @@ export default {
 #listTasks {
   margin: 0 0 0 0;
   padding: 0 0 10% 0;
-  height: 70%;
+  height: 430px;
   overflow: auto;
 }
 .task {
@@ -66,12 +66,12 @@ export default {
   padding-left: 5%;
   margin-top: 3%;
   margin-bottom: 3%;
-  margin-left: 4%;
+  margin-left: 20px;
   background: $backgroundColor 0% 0% no-repeat padding-box;
   border-radius: 10px;
   font-family: "Proxima Nova";
-  font-size: 1vw;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   letter-spacing: 0px;
   color: $white;
   opacity: 1;
@@ -94,8 +94,11 @@ export default {
     background-color: $white;
     color: $backgroundColor;
     border-left: none !important;
-    padding-left: 4%;
-    margin-left: calc(5% + 15px);
+    padding-left: 5%;
+    margin-left: 50px;
+    width: 290px;
+    padding-top: 3%;
+    padding-bottom: 3%;
     border-bottom: 1px solid $offWhite;
     border-radius: 0px;
 }
@@ -105,7 +108,7 @@ export default {
   padding-left: 35px;
   margin-bottom: 0px;
   cursor: pointer;
-  font-size: 1.5vw;
+  font-size: 24px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -123,12 +126,12 @@ export default {
 }
 .checkmark {
   position: absolute;
-  top: -0.3vw;
+  top: -5px;
   left: 0;
-  height: 1.5vw;
-  width: 1.5vw;
+  height: 24px;
+  width: 24px;
   background-color: $almostWhite;
-  border-radius: 1000px;
+  border-radius: 24px;
 }
 .checkContainer:hover input ~ .checkmark {
   background-color: $offWhite;
@@ -145,11 +148,25 @@ export default {
   display: block;
 }
 .checkContainer .checkmark:after {
-  top: 0.38vw;
-  left: 0.38vw;
-  width: 1vw;
-  height: 1vw;
+  top: 6px;
+  left: 6px;
+  width: 24px;
+  height: 24px;
   background: transparent url("../assets/tick.svg") 0% 0% no-repeat padding-box;
-  background-size: 0.75vw 0.75vw;
+  background-size: 12px 12px;
+}
+.child .checkContainer {
+  font-size: 20px;
+}
+.child .checkmark {
+  height: 20px;
+  width: 20px;
+}
+.child .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    background-size: 10px 10px;
 }
 </style>

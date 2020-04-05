@@ -176,10 +176,10 @@ export default {
 // Container positioning and style
 #listContainer {
   position: fixed;
-  width: 25%;
-  height: 60%;
-  top: 20%;
-  left: 37.5%;
+  width: 400px;
+  height: 600px;
+  top: 10%;
+  left: calc(50% - 200px);
   background: $white 0% 0% no-repeat padding-box;
   border-radius: 10px;
 }
@@ -202,13 +202,13 @@ export default {
 }
 // Style list name
 #listName {
-  padding-top: 4%;
-  padding-bottom: 4%;
+  padding-top: 30px;
+  padding-bottom: 30px;
   text-align: center;
   font-family: Proxima Nova;
   font-weight: Bold;
-  font-size: 2vw;
-  height: 5%;
+  font-size: 30px;
+  height: 30px;
   letter-spacing: 0px;
   color: $titleColor;
 }
@@ -216,7 +216,7 @@ export default {
   position: fixed;
   width: 64px;
   height: 64px;
-  top: calc(80% - 32px);
+  top: calc(10% + 600px - 32px);
   left: calc(50% - 32px);
   background: #061a27 0% 0% no-repeat padding-box;
   border: 4px solid $green;
@@ -225,7 +225,7 @@ export default {
   text-align: center;
   font-size: 50px;
   font-weight: 250;
-  line-height: 50px;
+  line-height: 30px;
   color: #ffffffcc;
   transition: 0.3s;
   z-index: 3;
@@ -278,7 +278,7 @@ export default {
   padding: 5%;
   height: 30%;
   font-family: Proxima Nova;
-  font-size: 1vw;
+  font-size: 18px;
   resize: none;
 }
 #taskName:focus {
@@ -290,14 +290,14 @@ export default {
   height: 10%;
   padding-top: 2%;
   font-family: Proxima Nova;
-  font-size: 0.7vw;
+  font-size: 12px;
 }
 #priorityContainer h2 {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   display: inline-block;
   margin-left: 10%;
-  width: 30%;
+  width: 25%;
 }
 .priorityBtn {
   width: 70px;
@@ -334,14 +334,14 @@ export default {
   width: 100%;
   height: 10%;
   font-family: Proxima Nova;
-  font-size: 0.7vw;
+  font-size: 12px;
 }
 #parentContainer h2 {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   display: inline-block;
   margin-left: 10%;
-  width: 30%;
+  width: 25%;
 }
 #parentContainer select {
   width: 220px;
