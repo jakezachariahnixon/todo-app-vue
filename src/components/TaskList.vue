@@ -3,7 +3,7 @@
     <li
       v-for="todo in tasks"
       v-bind:key="todo.title"
-      :class="{ complete: todo.completed }"
+      :class="{complete : todo.completed, highP : todo.priority == 'high', midP : todo.priority == 'mid', lowP : todo.priority == 'low'}"
       class="task"
     >
       {{ todo.title }}
@@ -55,6 +55,15 @@ export default {
 .complete {
   opacity: 0.68;
   transition: 0.3s;
+}
+.lowP {
+    border-left: 15px solid $lowPriority;
+}
+.midP {
+    border-left: 15px solid $midPriority;
+}
+.highP {
+    border-left: 15px solid $highPriority;
 }
 // Custom checkbox
 .checkContainer {
