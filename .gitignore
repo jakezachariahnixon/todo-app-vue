@@ -22,3 +22,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Deployment scripts & config
+deploy.sh
+vue.config.js
