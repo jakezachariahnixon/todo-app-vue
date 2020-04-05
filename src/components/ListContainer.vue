@@ -182,8 +182,9 @@ export default {
 #listContainer {
   position: fixed;
   width: 400px;
-  height: 600px;
-  top: 10%;
+  height: 550px;
+  // top: 10%;
+  bottom: max(calc(90% - 600px), 32px);
   left: calc(50% - 200px);
   background: $white 0% 0% no-repeat padding-box;
   border-radius: 10px;
@@ -218,10 +219,10 @@ export default {
   color: $titleColor;
 }
 #addTaskBtn {
-  position: fixed;
+  position: relative;
   width: 64px;
   height: 64px;
-  top: calc(10% + 600px - 32px);
+  bottom: 32px;
   left: calc(50% - 32px);
   background: #061a27 0% 0% no-repeat padding-box;
   border: 4px solid $green;

@@ -78,7 +78,7 @@ export default {
 #listTasks {
   margin: 0 0 0 0;
   padding: 0 0 10% 0;
-  height: 430px;
+  height: 380px;
   overflow: auto;
 }
 .task {
