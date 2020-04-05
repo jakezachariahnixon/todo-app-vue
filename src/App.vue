@@ -55,7 +55,7 @@ body {
   top: calc(50% - 200px);
   font: Bold 15vw/314px Proxima Nova;
   letter-spacing: 0px;
-  color: #ffffff;
+  color: $white;
   opacity: 0.03;
   margin: 0 0 0 0;
 }
